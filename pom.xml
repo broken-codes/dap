@@ -17,6 +17,9 @@
     <properties>
         <java.version>11</java.version>
         <openpojo.version>0.8.13</openpojo.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
     </properties>
 
     <dependencies>

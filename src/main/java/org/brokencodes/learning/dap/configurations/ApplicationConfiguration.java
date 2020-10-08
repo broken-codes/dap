@@ -9,8 +9,6 @@ import org.springframework.util.StopWatch;
 
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@EntityScan(basePackages = {"org.brokencodes.learning.dap.beans"})
-@EnableJpaRepositories(basePackages = {"org.brokencodes.learning.dap.repositories"})
 public class ApplicationConfiguration {
 
     @Bean
