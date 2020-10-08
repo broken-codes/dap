@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
  * <p>Answer: 233168</p>
  */
 @Slf4j
-public class ProjectEulerP01 implements ISolve {
+public class ProjectEulerP1 implements ISolve {
 
     @Override
     public void solve() {
