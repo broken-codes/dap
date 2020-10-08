@@ -15,9 +15,13 @@ public class Index {
 
     private String className;
 
-    private String description;
+    private String problemName;
+
+    private String problemDescription;
 
     private IndexType type;
+
+    private String referenceUrl;
 
     private LocalDateTime createdOn;
 
