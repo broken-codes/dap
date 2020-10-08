@@ -8,6 +8,7 @@ import java.util.function.LongSupplier;
 public class FibonacciSequenceGenerator implements LongSupplier {
 
     long current = 1;
+
     long previous = 0;
 
     @Override
