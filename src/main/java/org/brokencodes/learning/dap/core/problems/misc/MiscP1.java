@@ -30,6 +30,8 @@ public class MiscP1 implements ISolve {
     }
 
     /**
+     * SOLUTION: 01 - Brute Force
+     *
      * This brute force solution takes each number of the array and tries to find if there is another element with
      * which if this number is summed, leads to the expectedSum.
      *
@@ -50,6 +52,8 @@ public class MiscP1 implements ISolve {
     }
 
     /**
+     * SOLUTION: 02 - Using additional space and utilise O(1) search for {@link HashSet}
+     *
      * If there are two numbers whose sum is equal to another number K and we know one of those numbers, we can find
      * the other number by subtracting known number from the expectedSum (call this D). If we are able to quickly test
      * if the difference D exists in the given array (or any other data structure), we can get our {@link Pair}s.
