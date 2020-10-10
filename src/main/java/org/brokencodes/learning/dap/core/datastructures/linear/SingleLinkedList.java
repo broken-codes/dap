@@ -2,6 +2,8 @@ package org.brokencodes.learning.dap.core.datastructures.linear;
 
 import org.brokencodes.learning.dap.core.datastructures.holders.SingleLinkedListNode;
 
+import java.util.Optional;
+
 public class SingleLinkedList<T> {
 
     private int occupied;
@@ -9,6 +11,9 @@ public class SingleLinkedList<T> {
     private SingleLinkedListNode<T> head;
     private SingleLinkedListNode<T> tail;
 
+    /**
+     * Create the instance of {@link SingleLinkedList}
+     */
     public SingleLinkedList() {
         head = new SingleLinkedListNode<T>(null);
         tail = head;
@@ -44,6 +49,26 @@ public class SingleLinkedList<T> {
             currentNode = currentNode.getNext();
         }
         currentNode.setNext(currentNode.getNext().getNext());
+        occupied--;
+    }
+
+    /**
+     * Delete data from {@link SingleLinkedList}
+     *
+     * @param data the data that needs to be removed from {@link SingleLinkedList}
+     * @return optional data
+     */
+    public Optional<Integer> delete(T data) {
+        SingleLinkedListNode<T> currentNode = this.head;
+        int currentPosition = 0;
+        if ((currentNode = currentNode.getNext()) != null) {
+            currentPosition++;
+            if (currentNode.getData().equals(data)) {
+                occupied--;
+                return Optional.of(currentPosition);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
