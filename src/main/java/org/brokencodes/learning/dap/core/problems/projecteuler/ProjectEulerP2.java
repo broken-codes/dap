@@ -28,12 +28,16 @@ public class ProjectEulerP2 implements ISolve {
 
     @Override
     public void solve() {
-        long sum = LongStream.generate(new FibonacciSequenceGenerator())
-                .filter(i -> i % 2 == 0)
-                .takeWhile(i -> i < 4000000)
-                .sum();
+        long sum = getSum(4000000);
 
         log.info("Sum of even Fibonacci numbers less than 4 millions is: {}", sum);
+    }
+
+    private long getSum(long limit) {
+        return LongStream.generate(new FibonacciSequenceGenerator())
+                .filter(i -> i % 2 == 0)
+                .takeWhile(i -> i < limit)
+                .sum();
     }
 
 }

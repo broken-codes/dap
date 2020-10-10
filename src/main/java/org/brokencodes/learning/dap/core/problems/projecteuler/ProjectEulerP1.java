@@ -22,10 +22,15 @@ public class ProjectEulerP1 implements ISolve {
 
     @Override
     public void solve() {
-        int sum = IntStream.range(1, 1000)
-                .filter(n -> n % 3 == 0 || n % 5 == 0)
-                .sum();
+        int sum = getSum(1, 1000);
         log.info("Sum of multiples of 3 or 5 is: {}", sum);
     }
+
+    private int getSum(int start, int endExclusive) {
+        return IntStream.range(start, endExclusive)
+                .filter(n -> n % 3 == 0 || n % 5 == 0)
+                .sum();
+    }
+
 
 }
