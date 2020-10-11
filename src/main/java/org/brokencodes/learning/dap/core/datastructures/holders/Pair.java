@@ -5,6 +5,7 @@ import java.util.Objects;
 /**
  * {@link Pair} data structure is a holder for two elements at a time. The elements can be of same or different
  * data types.
+ *
  * @param <ONE>
  * @param <TWO>
  */
@@ -16,6 +17,7 @@ public class Pair<ONE, TWO> {
 
     /**
      * Create an instance of {@link Pair}. Both elements are required for creating instance of a pair.
+     *
      * @param one First element of the {@link Pair}
      * @param two Second element of the {@link Pair}
      */

@@ -63,12 +63,12 @@ public class MiscP1 implements ISolve {
     private List<Pair<Integer, Integer>> getSumPairsUsingHashSet(int[] elements, int expectedSum) {
         final Set<Integer> cache = new HashSet<>();
         List<Pair<Integer, Integer>> pairs = new LinkedList<>();
-        for (int i = 0; i < elements.length; i++) {
-            final int diff = expectedSum - elements[i];
+        for (int element : elements) {
+            final int diff = expectedSum - element;
             if (cache.contains(diff)) {
-                pairs.add(new Pair<>(elements[i], diff));
+                pairs.add(new Pair<>(element, diff));
             }
-            cache.add(elements[i]);
+            cache.add(element);
         }
         return pairs;
     }
@@ -82,7 +82,7 @@ public class MiscP1 implements ISolve {
      * elements at the start and end pointers. If we have found the element {@link Pair}, move start left by one
      * position and end right by one position.
      *
-     * @param elements an array of {@link Integer}
+     * @param elements    an array of {@link Integer}
      * @param expectedSum expected sum of each pair {@link Pair} from elements
      * @return List of {@link Pair} of elements whose sum is equal to the expected sum
      */
@@ -91,7 +91,7 @@ public class MiscP1 implements ISolve {
         int start = 0;
         int end = elements.length - 1;
         List<Pair<Integer, Integer>> pairs = new LinkedList<>();
-        while (start > end) {
+        while (start < end) {
             if (elements[start] + elements[end] > expectedSum) {
                 end--;
             } else if (elements[start] + elements[end] < expectedSum) {
@@ -104,4 +104,5 @@ public class MiscP1 implements ISolve {
         }
         return pairs;
     }
+
 }

@@ -9,13 +9,14 @@ public class SingleLinkedList<T> {
     private int occupied;
 
     private SingleLinkedListNode<T> head;
+
     private SingleLinkedListNode<T> tail;
 
     /**
      * Create the instance of {@link SingleLinkedList}
      */
     public SingleLinkedList() {
-        head = new SingleLinkedListNode<T>(null);
+        head = new SingleLinkedListNode<>(null);
         tail = head;
     }
 
@@ -33,20 +34,21 @@ public class SingleLinkedList<T> {
     /**
      * Removes the element from {@link SingleLinkedList}
      *
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException when index is more than size of the {@link SingleLinkedList}
      */
     public void delete(int index) throws IndexOutOfBoundsException {
         if (0 > index) {
-            throw new IndexOutOfBoundsException(String.format("Given index: {} is less than 0", index));
+            throw new IndexOutOfBoundsException(String.format("Given index: %s is less than 0", index));
         }
         if (index > occupied) {
-            throw new IndexOutOfBoundsException(String.format("Size of the linked list is less than {}", index));
+            throw new IndexOutOfBoundsException(String.format("Size of the linked list is less than %s", index));
         }
         int currentPosition = 0;
         SingleLinkedListNode<T> currentNode = this.head;
         // Take us to the node whose successor needs to be deleted.
         while (currentPosition < index) {
             currentNode = currentNode.getNext();
+            currentPosition++;
         }
         currentNode.setNext(currentNode.getNext().getNext());
         occupied--;
@@ -74,22 +76,23 @@ public class SingleLinkedList<T> {
     /**
      * Gets the element at the given index from {@link SingleLinkedList}
      *
-     * @param index
-     * @return
-     * @throws IndexOutOfBoundsException
+     * @param index position from which the element has to be obtained
+     * @return data value at position = index
+     * @throws IndexOutOfBoundsException if index > occupied or index < 0
      */
     public T get(int index) throws IndexOutOfBoundsException {
         if (0 > index) {
-            throw new IndexOutOfBoundsException(String.format("Given index: {} is less than 0", index));
+            throw new IndexOutOfBoundsException(String.format("Given index: %s is less than 0", index));
         }
         if (index > occupied) {
-            throw new IndexOutOfBoundsException(String.format("Size of the linked list is less than {}", index));
+            throw new IndexOutOfBoundsException(String.format("Size of the linked list is less than %s", index));
         }
         int currentPosition = 0;
         SingleLinkedListNode<T> currentNode = this.head;
         // Take us to the node whose successor needs to be deleted.
         while (currentPosition < index) {
             currentNode = currentNode.getNext();
+            currentPosition++;
         }
         return currentNode.getNext().getData();
     }
@@ -97,9 +100,10 @@ public class SingleLinkedList<T> {
     /**
      * Returns the number of elements in {@link SingleLinkedList}
      *
-     * @return
+     * @return size of {@link SingleLinkedList}
      */
     public long size() {
         return occupied;
     }
+
 }
