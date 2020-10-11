@@ -1,5 +1,7 @@
 package org.brokencodes.learning.dap.core.problems.projecteuler;
 
+import lombok.extern.slf4j.Slf4j;
+import org.brokencodes.learning.dap.core.algorithms.maths.SieveOfEratosthenesPrimeNumberGenerator;
 import org.brokencodes.learning.dap.core.problems.ISolve;
 
 import java.util.ArrayList;
@@ -17,16 +19,18 @@ import java.util.stream.IntStream;
  * <u>Reference:</u>
  * <a href="https://projecteuler.net/problem=3">https://projecteuler.net/problem=3</a>
  * </p>
- * <p>Answer: </p>
+ * <p>Answer: 6857</p>
  */
+@Slf4j
 public class ProjectEulerP3 implements ISolve {
 
     private static final Long LARGEST_PRIME_FACTOR_OF = 600851475143L;
 
     @Override
     public void solve() {
-        long numberToFactorize = 10;
-        int largestPrimeFactor = largestPrimeFactorBruteForce(numberToFactorize);
+        long numberToFactorize = 600851475143L;
+        long largestPrimeFactor = largestPrimeFactorByPrimeNumberGeneration(numberToFactorize);
+        log.info("Largest prime factor of : {} is: {}", numberToFactorize, largestPrimeFactor);
     }
 
     /**
@@ -59,14 +63,11 @@ public class ProjectEulerP3 implements ISolve {
      * @param numberToFactorize number whoes largest prime factor is required
      * @return largest prime factor else -1 if the number itself is a prime
      */
-    public int largestPrimeFactorByPrimeNumberGeneration(long numberToFactorize) {
-        final List<Integer> primes = new ArrayList<>(Arrays.asList(2, 3));
-        IntStream.range(4, ((int) Math.sqrt(numberToFactorize)) + 1)
-                .filter(number ->
-                        primes.stream()
-                                .anyMatch(i -> number % i == 0)
-                )
-                .forEach(primes::add);
+    public long largestPrimeFactorByPrimeNumberGeneration(long numberToFactorize) {
+        long sqrt = (long) Math.sqrt(numberToFactorize);
+        SieveOfEratosthenesPrimeNumberGenerator primeGenerator = new SieveOfEratosthenesPrimeNumberGenerator();
+        primeGenerator.generatePrimesInOrderTill(sqrt + 1);
+        List<Long> primes = primeGenerator.getPrimes();
 
         for (int i = primes.size() - 1; i > 0; --i) {
             if (numberToFactorize % primes.get(i) == 0) {
